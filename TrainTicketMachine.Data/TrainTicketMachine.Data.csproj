@@ -6,4 +6,20 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\TrainTicketMachine.Application\TrainTicketMachine.Application.csproj" />
+      <ProjectReference Include="..\TrainTicketMachine.Domain\TrainTicketMachine.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.5" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.5" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="6.0.5" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.0.7" />
+    </ItemGroup>
+
 </Project>

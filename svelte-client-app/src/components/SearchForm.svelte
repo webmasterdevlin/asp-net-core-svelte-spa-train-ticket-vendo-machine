@@ -1,21 +1,31 @@
 <script lang="ts">
-    export let handleOnSubmit;
-    export let search = "";
-    export let letters = [];
-    export let nextValidLetters = [];
+    import {letters} from "../utils/station.ts";
 
+    export let handleOnSubmit;
+    export let nextSuggestedLetters: string[] = [];
 </script>
 
-   <div style="width: 100%;display: flex; flex-direction: row; gap: 1rem; justify-content: flex-start; flex-wrap: wrap; align-items: center ">
+   <div class="form-container">
        {#each letters as letter}
            <form on:submit|preventDefault={handleOnSubmit(letter)}>
-              <button class:possible={nextValidLetters.includes(letter)} type="submit">{letter}</button>
+              <button class:suggested-button={nextSuggestedLetters.includes(letter)}
+                      type="submit">{letter === " " ? "space" : letter}
+              </button>
            </form>
        {/each}
    </div>
 
 <style>
-    .possible {
+    .form-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        align-items: center
+    }
+    .suggested-button {
         color: white;
         background-color: green;
     }

@@ -1,6 +1,6 @@
 using AutoMapper;
 
-namespace TrainTicketMachine.Application.Common;
+namespace TrainTicketMachine.Application.Common.Mappings;
 
 public interface IMapFrom<T>
 {

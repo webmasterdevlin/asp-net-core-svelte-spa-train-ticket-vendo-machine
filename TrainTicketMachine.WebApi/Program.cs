@@ -1,9 +1,16 @@
+using TrainTicketMachine.Application;
+using TrainTicketMachine.Data;
+using TrainTicketMachine.WebApi.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddApplication(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddApiVersioningExtension();
+builder.Services.AddVersionedApiExplorerExtension();
+builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -16,9 +23,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCors(b =>
+{
+    b.AllowAnyOrigin();
+    b.AllowAnyHeader();
+    b.AllowAnyMethod();
+});
 
-app.UseAuthorization();
+app.UseHttpsRedirection();
 
 app.MapControllers();
 

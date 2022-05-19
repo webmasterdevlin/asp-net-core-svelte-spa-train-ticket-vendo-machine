@@ -1,7 +1,7 @@
 using System.Reflection;
 using AutoMapper;
 
-namespace TrainTicketMachine.Application.Common;
+namespace TrainTicketMachine.Application.Common.Mappings;
 
 public class MappingProfile : Profile
 {

@@ -12,3 +12,13 @@
 npm install --force
 npm run dev
 ```
+
+---
+#### Client App
+![screenshot](./screenshot.png)
+
+---
+#### Sample Data in SQLite
+![screenshot](./screenshot2.png)
+
+---
