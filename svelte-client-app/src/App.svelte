@@ -60,11 +60,11 @@
     {#if stations.length > 0}
       <ul>
         {#each stations as station}
-          <li>{station.name}</li>
+          <li data-cy="station">{station.name}</li>
         {/each}
       </ul>
       {:else}
-      <p>No stations found</p>
+      <p data-cy="no-stations">No stations found</p>
       <p>You can reset the search to start again</p>
     {/if}
   </div>

@@ -8,7 +8,7 @@
    <div class="form-container">
        {#each letters as letter}
            <form on:submit|preventDefault={handleOnSubmit(letter)}>
-              <button class:suggested-button={nextSuggestedLetters.includes(letter)}
+              <button data-cy="letter-button" class:suggested-button={nextSuggestedLetters.includes(letter)}
                       type="submit">{letter === " " ? "space" : letter}
               </button>
            </form>

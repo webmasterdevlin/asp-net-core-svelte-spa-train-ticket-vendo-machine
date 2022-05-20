@@ -1,37 +1,47 @@
-using TrainTicketMachine.Application;
-using TrainTicketMachine.Data;
-using TrainTicketMachine.WebApi.Extensions;
+using Microsoft.EntityFrameworkCore;
+using TrainTicketMachine.Data.Contexts;
+using TrainTicketMachine.WebApi;
 
-var builder = WebApplication.CreateBuilder(args);
+ public class Program
+    {
+        public static async Task<int> Main(string[] args)
+        {
+            try
+            {
+                var host = CreateHostBuilder(args).Build();
+                using (var scope = host.Services.CreateScope())
+                {
+                    var services = scope.ServiceProvider;
+                    try
+                    {
+                        var context = services.GetRequiredService<ApplicationDbContext>();
+                        
+                        if (context.Database.IsSqlServer()) 
+                            await context.Database.MigrateAsync();
 
-builder.Services.AddApplication(builder.Configuration);
-builder.Services.AddInfrastructure(builder.Configuration);
+                        await ApplicationDbContextSeed.SeedSampleDataAsync(context);
+                    }
 
-builder.Services.AddControllers();
-builder.Services.AddApiVersioningExtension();
-builder.Services.AddVersionedApiExplorerExtension();
-builder.Services.AddCors();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+                    catch (Exception ex)
+                    {
+                        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                        logger.LogError(ex, "An error occurred while migrating or seeding the database");
 
-var app = builder.Build();
+                        throw;
+                    }
+                }
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+                await host.RunAsync();
 
-app.UseCors(b =>
-{
-    b.AllowAnyOrigin();
-    b.AllowAnyHeader();
-    b.AllowAnyMethod();
-});
+                return 0;
+            }
 
-app.UseHttpsRedirection();
+            catch (Exception ex)
+            {
+                return 1;
+            }
+        }
 
-app.MapControllers();
-
-app.Run();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+    }

@@ -11,6 +11,7 @@
 ```bash
 npm install --force
 npm run dev
+npm run test
 ```
 
 ---
@@ -22,3 +23,13 @@ npm run dev
 ![screenshot](./screenshot2.png)
 
 ---
+#### Svelte Automated Tests
+![screenshot](./screenshot3.png)
+
+
+---
+#### ASP.NET Core 6 Automated Tests
+![screenshot](./screenshot4.png)
+
+---
+#### Test Db is SQL Server while Prod is SQLite to quickly run the app locally for POC purposes

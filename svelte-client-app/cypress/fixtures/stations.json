@@ -1,0 +1,42 @@
+[
+  {
+    "id": "eea6bb4a-385e-43cb-a6f3-7f23253336ba",
+    "name": "dartford"
+  },
+  {
+    "id": "00dbbec2-1928-494c-bf28-9c6c691e3c59",
+    "name": "dartmouth"
+  },
+  {
+    "id": "dd99a54d-61bb-45f9-a5c8-597ae298d2f7",
+    "name": "tower hill"
+  },
+  {
+    "id": "9cf27dd3-eee4-4c1f-979c-f46d83b67eac",
+    "name": "derby"
+  },
+  {
+    "id": "3d06ff16-9923-4efa-b7a4-3bd2f8d88183",
+    "name": "liverpool"
+  },
+  {
+    "id": "cbe7b78c-474c-4fe3-a351-3769e87421b0",
+    "name": "liverpool lime street"
+  },
+  {
+    "id": "e6fb7e14-06e9-469a-9974-71d3bdbac51b",
+    "name": "paddington"
+  },
+  {
+    "id": "0edb1207-e337-42a5-aeea-3036af005e19",
+    "name": "euston"
+  },
+  {
+    "id": "8c06c61b-3933-44be-b1f9-c3ac550f1493",
+    "name": "london bridge"
+  },
+  {
+    "id": "caa39049-f5d1-40e4-852b-3ce472aea5da",
+    "name": "victoria"
+  }
+]
